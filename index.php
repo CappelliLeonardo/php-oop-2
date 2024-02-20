@@ -5,38 +5,104 @@
     require_once __DIR__.'/classes/toys.php';
 
 
-$arrayVuoto= [];
+
+$allProducts= [];
 
 
-$product1 =  new food( 'Bastoncini dentflix','https://m.my-personaltrainer.it/images/ricette/1040/salsicciotto-per-cani.jpg', '20,99€' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
+$product1 =  new food( 'Bastoncini dentflix','https://m.media-amazon.com/images/I/41z8pR5M4vL.jpg', '20,99€' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
 //var_dump ($product1);
 
-$arrayVuoto[] = $product1;
+$allProducts[] = $product1;
 
 
 
 
-$product2 = new dogbed ('Cuccia deluxe', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.focusjunior.it%2Fanimali%2Fanimali-domestici%2Fbizzarre-case-di-lusso-per-cani%2F&psig=AOvVaw2-PZ7rSTCh-SCfmTmQWASw&ust=1708451702983000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNju49r8t4QDFQAAAAAdAAAAABAG', '2550,00€', 'Cane', 15, 'Cuccia deluxe per il pet del tuo cuore', '4.5', 'velluto idrorepellente', '150cm X 150cm');
+$product2 = new dogbed ('Cuccia deluxe', 'https://www.cuccia-per-cani.com/wp-content/uploads/2017/02/612BY69NS6rL.jpg', '2550,00€', 'Cane', 15, 'Cuccia deluxe per il pet del tuo cuore', '4.5', 'velluto idrorepellente', '150cm X 150cm');
 //var_dump ($product2);
 
-$arrayVuoto[] = $product2;
+$allProducts[] = $product2;
 
 
-$product3 = new toys ('freesbee', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.galleranistore.it%2Fgioco-per-cani-frisbee-snoopy&psig=AOvVaw3x41RVxRMn6W9KJ1pvp2Gz&ust=1708451513563000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPCH7YD8t4QDFQAAAAAdAAAAABAH', '15,99€', 'Cane', 15, 'freesbee notturno', '3.5', 'polypropylene', '50cm X 50cm');
+$product3 = new toys ('freesbee', 'https://www.robinsonpetshop.it/news/cms2017/wp-content/uploads/2019/04/04-08_frisbee.jpg', '15,99€', 'Cane', 15, 'freesbee notturno', '3.5', 'polypropylene', '50cm X 50cm');
 //var_dump ($product3);
-$arrayVuoto[] = $product3;
+$allProducts[] = $product3;
 
-var_dump ($arrayVuoto);
+var_dump ($allProducts);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
+    <!-- FONTAWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- BOOTSTRAP -->
     
-</body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    </head>
+    <body>
+        <header>
+            <h1>
+                ZOOCLUB
+            </h1>
+        </header>
+        <main>
+            <div class="row justify-content-between ">
+                <?php
+                    foreach ($allProducts as $singleProduct) {
+                ?>
+                    <div class="col-3">
+                        <div class="card">
+                            <img src="<?php echo $singleProduct->image; ?>" class="card-img-top">
+                            <div class="card-body">
+                                <h3>
+                                    <?php echo $singleProduct-> name; ?>
+                                </h3>
+                                <ul>
+                                    <li>
+                                        Categoria: <?php echo $singleProduct-> category; ?>
+                                    </li>
+                                    <li>
+                                        Prezzo: <?php echo $singleProduct-> price; ?>
+                                    </li>
+                                    <li>
+                                        Disponibili: <?php echo $singleProduct-> stock;?>
+                                    </li>
+                                </ul>
+                                <?php
+                                    if(get_class($singleProduct)=='toys'){
+                                ?>
+                                    <p> Materiale: <?php echo $singleProduct->material;?> </p>
+                                <?php
+                                    }
+                                    else if (get_class($singleProduct)== 'food'){
+                                ?>
+                                    <p> Data scadenza: <?php echo $singleProduct-> expireDate; ?> </p>
+                                <?php
+                                    }
+                                    else if (get_class($singleProduct)== 'dogbed'){
+                                ?>
+                                    <p> Dimensioni: <?php echo $singleProduct->dimension; ?> </p>
+                                <?php
+                                    }
+                                ?>
+                                <p>
+                                    <?php echo $singleProduct->description; ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    }
+                ?>
+            </div>
+        </main>
+    </body>
 </html>
