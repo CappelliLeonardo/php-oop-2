@@ -26,7 +26,7 @@
             }
             else {
                 // Dì al programmatore che sta sbagliando (e cosa)
-                throw new Exception('Valore prodotto non valido valore not numeric');
+                throw new Exception('valore not numeric');
             }
             
             $this->category = $category;

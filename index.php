@@ -10,14 +10,14 @@ $allProducts= [];
 
 
 try{
-    $product1 =  new food( 'Bastoncini dentflix','https://m.media-amazon.com/images/I/41z8pR5M4vL.jpg', '2099D' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
+    $product1 =  new food( 'Bastoncini dentflix','https://m.media-amazon.com/images/I/41z8pR5M4vL.jpg', '2099d' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
 //var_dump ($product1);
 
 $allProducts[] = $product1;
 
 }
 catch(Exception $e){
-    echo '<h4 style="color: red;">Valore quantità prodotto generico non valido!</h4>';
+    echo '<h4 style="color: red;">Valore quantità prodotto generico non valido->'.$e->getMessage().' </h4>';
 }
 
 
@@ -33,7 +33,7 @@ $product3 = new toys ('freesbee', 'https://www.robinsonpetshop.it/news/cms2017/w
 //var_dump ($product3);
 $allProducts[] = $product3;
 
-var_dump ($allProducts);
+//var_dump ($allProducts);
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +59,7 @@ var_dump ($allProducts);
                 ZOOCLUB
             </h1>
         </header>
-        <main>
+        <main class="container">
             <div class="row justify-content-between ">
                 <?php
                     foreach ($allProducts as $singleProduct) {
