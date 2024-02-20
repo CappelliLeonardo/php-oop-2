@@ -75,6 +75,9 @@ var_dump ($allProducts);
                                     <li>
                                         Disponibili: <?php echo $singleProduct-> stock;?>
                                     </li>
+                                    <li>
+                                        Voto: <?php echo $singleProduct-> rate; ?>
+                                    </li>
                                 </ul>
                                 <?php
                                     if(get_class($singleProduct)=='toys'){
