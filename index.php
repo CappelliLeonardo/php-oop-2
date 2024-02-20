@@ -9,21 +9,27 @@
 $allProducts= [];
 
 
-$product1 =  new food( 'Bastoncini dentflix','https://m.media-amazon.com/images/I/41z8pR5M4vL.jpg', '20,99€' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
+try{
+    $product1 =  new food( 'Bastoncini dentflix','https://m.media-amazon.com/images/I/41z8pR5M4vL.jpg', '2099D' , 'Cane', 22, 'bastoncini proteici', '4.8', '23/05/2025', 'cocco e salame', '1kg');
 //var_dump ($product1);
 
 $allProducts[] = $product1;
 
+}
+catch(Exception $e){
+    echo '<h4 style="color: red;">Valore quantità prodotto generico non valido!</h4>';
+}
 
 
 
-$product2 = new dogbed ('Cuccia deluxe', 'https://www.cuccia-per-cani.com/wp-content/uploads/2017/02/612BY69NS6rL.jpg', '2550,00€', 'Cane', 15, 'Cuccia deluxe per il pet del tuo cuore', '4.5', 'velluto idrorepellente', '150cm X 150cm');
+
+$product2 = new dogbed ('Cuccia deluxe', 'https://www.cuccia-per-cani.com/wp-content/uploads/2017/02/612BY69NS6rL.jpg', '2550', 'Cane', 125, 'Cuccia deluxe per il pet del tuo cuore', '4.5', 'velluto idrorepellente', '150cm X 150cm');
 //var_dump ($product2);
 
 $allProducts[] = $product2;
 
 
-$product3 = new toys ('freesbee', 'https://www.robinsonpetshop.it/news/cms2017/wp-content/uploads/2019/04/04-08_frisbee.jpg', '15,99€', 'Cane', 15, 'freesbee notturno', '3.5', 'polypropylene', '50cm X 50cm');
+$product3 = new toys ('freesbee', 'https://www.robinsonpetshop.it/news/cms2017/wp-content/uploads/2019/04/04-08_frisbee.jpg', 145, 'Cane', 15, 'freesbee notturno', '3.5', 'polypropylene', '50cm X 50cm');
 //var_dump ($product3);
 $allProducts[] = $product3;
 

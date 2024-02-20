@@ -20,11 +20,21 @@
         {
             $this->name = $name;
             $this->image = $image;
-            $this->price = $price;
+            
+            if (is_numeric($price)) {
+                $this->price = $price;
+            }
+            else {
+                // Dì al programmatore che sta sbagliando (e cosa)
+                throw new Exception('Valore prodotto non valido valore not numeric');
+            }
+            
             $this->category = $category;
             $this->stock = $stock;
             $this->description = $description;
             $this->rate = $rate;
         }
     }
+
+    
 ?>
